@@ -1,0 +1,14 @@
+@import 'variables';
+
+.progress-bar-container {
+  border: 5px solid $blue-light;
+  border-radius: 50px;
+  height: 30px;
+  width: 100%;
+}
+
+.progress-bar-progress {
+  @include transition(all, .3s, ease-out);
+  background: $blue-light;
+  height: 20px;
+}

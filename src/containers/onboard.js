@@ -148,6 +148,7 @@ class Onboard extends Component {
           <h3>What&#39;s your daily budget?</h3>
           <p>We&#39;ve calculated an estimate for you. Feel free to tweak it!</p>
           <Textbox
+            key="stage3"
             type="text"
             className="onboard-textbox"
             value={this.state.estimatedDailyBudget}
@@ -175,7 +176,6 @@ class Onboard extends Component {
             type="text"
             className="onboard-item-textbox"
             placeholder="The thing"
-            value=""
           />
           <Textbox
             type="text"
@@ -185,6 +185,7 @@ class Onboard extends Component {
           <span>Optional</span>
         </div>
         <Button
+          dest="/home"
           type="button"
           text="Start Saving"
           className="button-blue"
