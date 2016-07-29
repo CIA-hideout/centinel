@@ -1,0 +1,35 @@
+$default: 'Gotham';
+$black: #1b140b;
+$white: #fff;
+$grey: #929292;
+$grey-light: #fafafa;
+$blue-dark: #57899f;
+$blue-darker: #22363f;
+$blue: #8bddff;
+$blue-light: #b7eaff;
+$blue-lighter: #e2f6ff;
+$pink: #ff8ba3;
+$green: #b0dc00;
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform-translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+
+@mixin calc($prop, $val) {
+  @each $pre in -webkit-, -moz- {
+    #{$prop}: $pre + calc(#{$val});
+  }
+  #{$prop}: calc(#{$val});
+}

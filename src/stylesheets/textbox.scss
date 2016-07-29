@@ -1,0 +1,17 @@
+@import 'variables';
+
+.textbox {
+  border: 1px solid $blue;
+  border-radius: 5px;
+  font-size: 1em;
+  padding: 15px;
+}
+
+.textbox-login {
+  display: block;
+  height: 45px;
+  margin: 0 auto 10px;
+  max-width: 300px;
+  min-width: 250px;
+  width: 40%;
+}
