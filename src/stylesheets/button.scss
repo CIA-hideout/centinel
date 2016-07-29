@@ -25,3 +25,31 @@
     background: $blue-darker;
   }
 }
+
+.button-blue {
+  @include transition(all, .3s, ease-out);
+  background: $blue;
+  border-radius: 5px;
+  color: $white;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  &:hover {
+    background: $blue-dark;
+  }
+}
+
+.button-blue-dark-dotted {
+  @include transition(all, .3s, ease-out);
+  background: $white;
+  border: 2px dashed $blue-dark;
+  border-radius: 5px;
+  color: $blue-dark;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  &:hover {
+    background: lighten($blue-dark, 40%);
+    border-color: lighten($blue-dark, 20%);
+  }
+}

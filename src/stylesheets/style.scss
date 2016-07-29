@@ -33,13 +33,13 @@ button {
   box-sizing: border-box;
 }
 
-#root {
-  white-space: pre-wrap;
-}
-
-.SVGInline {
-  white-space: normal;
-}
+// #root {
+//   white-space: pre-wrap;
+// }
+//
+// .SVGInline {
+//   white-space: normal;
+// }
 
 .center {
   @include transform-translate(-50%, -50%);
@@ -52,4 +52,9 @@ button {
   @include transform-translate(0, -50%);
   position: relative;
   top: 50%;
+}
+
+.container {
+  border: 1px solid $blue;
+  border-radius: 5px;
 }

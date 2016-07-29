@@ -1,0 +1,13 @@
+@import 'variables';
+
+.template {
+  height: 100vh;
+  width: 100vw;
+
+  &-container {
+    @include calc(height, '100% - 50px');
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 20px;
+  }
+}
