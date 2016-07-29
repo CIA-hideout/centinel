@@ -1,5 +1,5 @@
 [
-  "You saved ${n} this week! Miracles do happen!",
+  "You saved ${price} this week! Miracles do happen!",
   "I think you got saving and spending mixed up again.",
   "You saved ${percent} more than average. I would clap for you, only I don’t have hands.",
   "You saved ${percent} less than the average. Shame.",
