@@ -1,5 +1,6 @@
 import * as quotesReducer from './reducers/reducer-quotes';
 import * as usersActions from './actions/action-users';
+import * as expenseActions from './actions/action-expenses';
 
 const reducerTest = (store) => {
   console.log('QUOTES REDUCER');
@@ -19,12 +20,43 @@ const reducerTest = (store) => {
     salary: 1000,
   };
 
+  const changedUser1 = {
+    name: 'darius',
+  };
+
   console.log('USERS REDUCER');
   store.dispatch(usersActions.createUser(user1));
   console.log(store.getState().users);
   store.dispatch(usersActions.createUser(user2));
   console.log(store.getState().users);
- 
+
+  store.dispatch(usersActions.editUser(changedUser1, 0));
+  console.log(store.getState().users);
+
+  store.dispatch(usersActions.deleteUser(0));
+  console.log(store.getState().users);
+
+  const expense1 = {
+    name: 'meal at ding tai fung',
+    cost: 10,
+    type: 'food',
+  };
+
+  const changedExpense1 = {
+    name: 'party at my house',
+    cost: 100,
+    type: 'recreation',
+  };
+
+  console.log('EXPENSES REDUCER');
+  store.dispatch(expenseActions.createExpense(expense1));
+  console.log(store.getState().expenses);
+
+  store.dispatch(expenseActions.editExpense(changedExpense1, 0));
+  console.log(store.getState().expenses);
+
+  store.dispatch(expenseActions.deleteExpense(0));
+  console.log(store.getState().expenses);
 };
 
 export default reducerTest;

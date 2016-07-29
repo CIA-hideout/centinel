@@ -1,7 +1,7 @@
 import * as types from '../constants/action-types';
 
 /**
- * 
+ * User db
  * @param data {Object} name, budget, salary
  */
 
@@ -10,10 +10,13 @@ export const createUser = (data) => ({
   data,
 });
 
-export const editUser = () => ({
+export const editUser = (data, userId) => ({
   type: types.EDIT_USER,
+  data,
+  userId,
 });
 
-export const deleteUser = () => ({
+export const deleteUser = (userId) => ({
   type: types.DELETE_USER,
+  userId,
 });
