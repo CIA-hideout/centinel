@@ -8,6 +8,8 @@ import userEntersApplication from '../data/userEntersApplication.json';
 const getRandomQuote = (state, key) => {
   let randomQuote = state.quotes[key][Math.floor(Math.random() * state.quotes[key].length)];
 
+  // TODO: Handle ${variable}
+
   return randomQuote;
 };
 

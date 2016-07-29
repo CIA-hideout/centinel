@@ -3,7 +3,7 @@
   "I think you got saving and spending mixed up again.",
   "You saved ${percent} more than average. I would clap for you, only I don’t have hands.",
   "You saved ${percent} less than the average. Shame.",
-  "Should I applaud you for saving {percentage}% more than last week?",
+  "Should I applaud you for saving ${percentage} more than last week?",
   "The money you saved for a rainy day would only last for a rainy 4 hours and 20 minutes.",
   "Well done this week! Wait, were you not expecting me to say something nice?",
   "You spent ${percent} less this week than average. Get a life! Just kidding you did great.",
