@@ -6,20 +6,30 @@
   cursor: pointer;
   font-size: 1em;
   padding: 15px;
+
+  .button-text {
+    display: inline-block;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .button-login {
   @include transition(all, .3s, ease-out);
   background: $blue-dark;
   border-radius: 5px;
-  color: $white;
-  font-weight: 500;
   height: 45px;
-  letter-spacing: 1px;
   margin-top: 10px;
   max-width: 300px;
   min-width: 250px;
   width: 40%;
+
+  .button-text {
+    color: $white;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
 
   &:hover {
     background: $blue-darker;
@@ -30,9 +40,12 @@
   @include transition(all, .3s, ease-out);
   background: $blue;
   border-radius: 5px;
-  color: $white;
   padding-left: 40px;
   padding-right: 40px;
+
+  .button-text {
+    color: $white;
+  }
 
   &:hover {
     background: $blue-dark;
@@ -44,12 +57,33 @@
   background: $white;
   border: 2px dashed $blue-dark;
   border-radius: 5px;
-  color: $blue-dark;
   padding-left: 40px;
   padding-right: 40px;
+
+  .button-text {
+    color: $blue-dark;
+  }
 
   &:hover {
     background: lighten($blue-dark, 40%);
     border-color: lighten($blue-dark, 20%);
   }
+}
+
+.button-svg {
+  display: inline-block;
+  padding: 0;
+
+  svg {
+    height: 14px;
+    vertical-align: middle;
+  }
+}
+
+.button-svg-front {
+  margin-right: 10px;
+}
+
+.button-svg-back {
+  margin-left: 10px;
 }
