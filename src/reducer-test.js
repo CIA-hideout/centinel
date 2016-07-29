@@ -39,17 +39,24 @@ const reducerTest = (store) => {
   const expense1 = {
     name: 'meal at ding tai fung',
     cost: 10,
-    type: 'food',
+    type: 0,
+  };
+
+  const expense2 = {
+    name: 'laser tag showdown',
+    cost: 30,
+    type: 2,
   };
 
   const changedExpense1 = {
     name: 'party at my house',
     cost: 100,
-    type: 'recreation',
+    type: 2,
   };
 
   console.log('EXPENSES REDUCER');
   store.dispatch(expenseActions.createExpense(expense1));
+  store.dispatch(expenseActions.createExpense(expense2));
   console.log(store.getState().expenses);
 
   store.dispatch(expenseActions.editExpense(changedExpense1, 0));

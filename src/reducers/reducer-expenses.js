@@ -3,6 +3,7 @@
  */
 import * as types from '../constants/action-types';
 import array from 'lodash/array';
+import moment from 'moment';
 
 // type checking
 const validateCreateExpense = (data) => (
@@ -28,6 +29,7 @@ const expenses = (state = [], action) => {
         const copiedState = state.slice(0);
         const newExpense = {
           id: copiedState.length === 0 ? 0 : array.last(copiedState).id + 1,
+          dateTime: moment(),
           ...action.data,
         };
 

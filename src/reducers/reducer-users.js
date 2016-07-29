@@ -1,6 +1,11 @@
 import * as types from '../constants/action-types';
-import { combineReducers } from 'redux';
 import array from 'lodash/array';
+
+/**
+ * This file may be useless but its hackathon so ¯\_(ツ)_/¯
+ * Probably will be using reducer-selected-user
+ *
+ */
 
 // type checking
 const validateCreateUser = (data) => (

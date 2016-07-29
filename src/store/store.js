@@ -25,7 +25,7 @@ const store = createStore(
     )
 );
 
-persistStore(store, { blacklist: [ 'users' ]}, () => {
+persistStore(store, { blacklist: ['users', 'expenses'] }, () => {
   // init initial data
   store.dispatch(initAppState());
   reducerTest(store);
