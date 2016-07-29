@@ -28,6 +28,7 @@ class Login extends Component {
             placeholder="Password"
           />
           <Button
+            dest="home"
             type="submit"
             text="LOGIN"
             className="button-login"

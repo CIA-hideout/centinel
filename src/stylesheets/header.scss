@@ -1,0 +1,53 @@
+@import 'variables';
+
+.header {
+  background: $white;
+  height: 50px;
+  padding: 10px 0;
+  width: 100%;
+
+  &-width {
+    height: 30px;
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  &-logo {
+    display: inline-block;
+
+    svg {
+      height: 30px;
+    }
+  }
+
+  &-user {
+    line-height: 30px;
+    position: absolute;
+    right: 20px;
+    text-align: right;
+    top: 0;
+    width: 180px;
+
+    p {
+      display: inline-block;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+      white-space: nowrap;
+      width: 140px;
+    }
+
+    .fake-user-pic {
+      background: $grey;
+      border-radius: 50px;
+      display: inline-block;
+      height: 30px;
+      margin-left: 10px;
+      vertical-align: middle;
+      width: 30px;
+    }
+  }
+}
