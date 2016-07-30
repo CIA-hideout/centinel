@@ -1,14 +1,18 @@
-[
-  "You saved ${price} this week! Miracles do happen!",
-  "I think you got saving and spending mixed up again.",
-  "You saved ${percent} more than average. I would clap for you, only I don’t have hands.",
-  "You saved ${percent} less than the average. Shame.",
-  "Should I applaud you for saving ${percent} more than last week?",
-  "The money you saved for a rainy day would only last for a rainy 4 hours and 20 minutes.",
-  "Well done this week! Wait, were you not expecting me to say something nice?",
-  "You spent ${percent} less this week than average. Get a life! Just kidding you did great.",
-  "Well done. In fact, I’m going to note this beside your name. Oh, there’s plenty of space for writing. \"Slightly… Above… Average\"",
-  "Money talks, but all yours ever say is ‘Goodbye’.",
-  "Pro-tip: Leave your wallet at home",
-  "I think I deserve a pay raise after keeping track of your expenses this week"
-]
+{
+  "positive": [
+    "You saved ${price} this week! Miracles do happen!",
+    "You saved ${percent} more than average. I would clap for you, only I don’t have hands.",
+    "Should I applaud you for saving ${percent} more than last week?",
+    "Well done this week! Wait, were you not expecting me to say something nice?,",
+    "You spent ${percent} less this week than average. Get a life! Just kidding you did great.",
+    "Well done. In fact, I’m going to note this beside your name. Oh, there’s plenty of space for writing. \"Slightly… Above… Average\""
+  ],
+  "negative": [
+    "I think you got saving and spending mixed up again.",
+    "You saved ${percent} less than the average. Shame.",
+    "The money you saved for a rainy day would only last for a rainy 4 hours and 20 minutes.",
+    "Money talks, but all yours ever say is ‘Goodbye’.",
+    "Pro-tip: Leave your wallet at home,",
+    "I think I deserve a pay raise after keeping track of your expenses this week"
+  ]
+}
