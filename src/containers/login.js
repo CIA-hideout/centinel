@@ -10,6 +10,8 @@ import '../stylesheets/login.scss';
 class Login extends Component {
   constructor(props) {
     super(props);
+
+
   }
 
   render() {
@@ -33,6 +35,9 @@ class Login extends Component {
             text="LOGIN"
             className="button-login"
           />
+          <div className="sign-up-link">
+            <a href="/signup">Sign up for Centinel here</a>
+          </div>
         </div>
       </div>
     );

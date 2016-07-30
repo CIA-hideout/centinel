@@ -1,5 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import SVGInline from 'react-svg-inline';
+import { connect } from 'react-redux';
+
+import { getSelectedUser } from '../reducers/reducer-selected-user';
+import * as userActions from '../actions/action-users';
+import { parseFloatToDp } from '../util/helper';
+import calcTax from '../util/calc-tax';
+
 import Template from './template';
 import Button from '../components/button';
 import Textbox from '../components/textbox';
@@ -20,9 +27,13 @@ class Onboard extends Component {
           cost: '',
         },
       ],
-      estimatedDailyBudget: '200.00',
+      monthlyIncome: '',
+      estimatedDailyBudget: '',
+      milestoneItem: '',
+      milestoneCost: '',
     };
 
+    this.calculateDefaultBudget = this.calculateDefaultBudget.bind(this);
     this.onStartClick = this.onStartClick.bind(this);
     this.incrementStage = this.incrementStage.bind(this);
     this.handleBudgetChange = this.handleBudgetChange.bind(this);
@@ -37,11 +48,56 @@ class Onboard extends Component {
   }
 
   onStartClick() {
+    // check for milestone and save accordingly
+    if (this.state.milestoneItem !== '' && this.state.milestoneCost !== '') {
+      this.props.saveMilestone({
+        item: this.state.milestoneItem,
+        cost: this.state.milestoneCost,
+      });
+    }
+
     console.log('start');
   }
 
   incrementStage() {
+    switch(this.state.onboardStage) {
+      case 2:
+        // Collect monthly income and monthly default expenditures
+        this.props.saveSalary(this.state.monthlyIncome);
+        this.props.saveMonthlyDefaultExpenditures(this.state.expenditures);
+        console.log(calcTax(this.state.monthlyIncome));
+
+        this.calculateDefaultBudget();
+        break;
+
+      case 3:
+        this.props.saveDailyBudget(this.state.estimatedDailyBudget);
+        break;
+
+      default:
+        console.log('[The Botmother]: this stage not for submission, twat');
+    }
+
     this.setState({ onboardStage: ++this.state.onboardStage });
+  }
+
+  calculateDefaultBudget() {
+    let totalExpenditures = 0;
+    let estimatedDailyBudget = 0;
+
+    this.state.expenditures.forEach(expense => {
+      totalExpenditures += parseInt(expense.cost, 10);
+    });
+
+    // estimating that number of days in month is 30
+    if (!totalExpenditures) {
+      estimatedDailyBudget = parseFloatToDp((this.state.monthlyIncome * 1.0) / 30, 2);
+    } else {
+      estimatedDailyBudget = parseFloatToDp(((this.state.monthlyIncome * 1.0 -
+      totalExpenditures) / 30), 2);
+    }
+
+    this.setState({ estimatedDailyBudget });
   }
 
   handleBudgetChange(event) {
@@ -120,6 +176,8 @@ class Onboard extends Component {
             type="text"
             className="onboard-textbox"
             placeholder="Monthly Income"
+            value={this.state.monthlyIncome}
+            onChange={(e) => this.setState({ monthlyIncome: e.target.value })}
           />
           <h3>Do you have any monthly default expenditures?</h3>
           <p>e.g. Utility bills, Insurance, Subscriptions</p>
@@ -180,11 +238,15 @@ class Onboard extends Component {
             type="text"
             className="onboard-item-textbox"
             placeholder="The thing"
+            value={this.state.milestoneItem}
+            onChange={(e) => this.setState({ milestoneItem: e.target.value })}
           />
           <Textbox
             type="text"
             className="onboard-item-cost"
             placeholder="$"
+            value={this.state.milestoneCost}
+            onChange={(e) => this.setState({ milestoneCost: e.target.value })}
           />
           <span className="onboard-optional">Optional</span>
         </div>
@@ -230,4 +292,8 @@ Onboard.propTypes = {
 
 };
 
-export default Onboard;
+const mapStateToProps = (state) => ({
+  user: getSelectedUser(state),
+});
+
+export default connect(mapStateToProps, userActions)(Onboard);

@@ -1,8 +1,14 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+
 import Template from './template';
 import Button from '../components/button';
 import Textbox from '../components/textbox';
 import TheBotMother from './the-botmother';
+
+import * as expenseActions from '../actions/action-expenses';
+import * as expenseReducer from '../reducers/reducer-expenses';
 
 import '../stylesheets/add-expenditure.scss';
 
@@ -21,6 +27,7 @@ class AddExpenditure extends Component {
 
     this.addExpenditure = this.addExpenditure.bind(this);
     this.renderExpenditures = this.renderExpenditures.bind(this);
+    this.onSubmitClick = this.onSubmitClick.bind(this);
   }
 
   addExpenditure() {
@@ -38,6 +45,17 @@ class AddExpenditure extends Component {
     expenditures[index][key] = event.target.value;
 
     this.setState({ expenditures });
+  }
+
+  onSubmitClick() {
+    this.state.expenditures.forEach(expense => {
+      this.props.createExpense({
+        name: expense.item,
+        cost: expense.cost
+      });
+    });
+
+    this.props.push('/home');
   }
 
   renderExpenditures() {
@@ -80,11 +98,11 @@ class AddExpenditure extends Component {
               />
             </div>
             <Button
-              dest="/home"
               image="arrow"
               type="button"
               text="Confirm"
               className="button-pink"
+              onClick={this.onSubmitClick}
             />
           </div>
           <TheBotMother />
@@ -98,4 +116,9 @@ AddExpenditure.propTypes = {
 
 };
 
-export default AddExpenditure;
+const mapStateToProps = (state) => ({
+  expenses: expenseReducer.getExpenses(state),
+});
+
+
+export default connect(mapStateToProps, { ...expenseActions, push })(AddExpenditure);
