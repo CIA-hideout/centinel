@@ -1,0 +1,52 @@
+@import 'variables';
+
+.add-expenditure {
+  height: 100%;
+  position: relative;
+  text-align: center;
+
+  h1 {
+    font-weight: 500;
+    margin: 0;
+  }
+
+  hr {
+    border-style: none;
+    border-top: 3px solid $blue-lighter;
+    margin: 10px 0 0;
+  }
+
+  .expenditure-form {
+    margin: 30px auto 40px;
+    max-width: 500px;
+    text-align: left;
+
+    h3 {
+      font-size: 1.3em;
+      font-weight: 400;
+    }
+
+    p {
+      color: $grey;
+      font-size: .9em;
+      font-weight: 200;
+    }
+
+    .new-expenditure {
+      margin-bottom: 15px;
+    }
+
+    .expenditure-item-name {
+      width: 65%;
+    }
+
+    .expenditure-item-cost {
+      @include calc(width, '35% - 10px');
+      margin-left: 10px;
+    }
+
+    .button-blue-dark-dashed {
+      width: 100%;
+    }
+  }
+}

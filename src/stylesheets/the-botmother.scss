@@ -13,7 +13,7 @@
   display: inline-block;
 
   svg {
-    @include transition(all, .5s, ease-out);
+    @include transition(all, .3s, ease-out);
     vertical-align: middle;
     width: 80px;
   }
@@ -25,26 +25,31 @@
   }
 }
 
-.the-botmother-chat-bubble {
-  @include calc(max-width, '100% - 110px');
-  background: $white;
-  border: 3px solid $grey;
-  border-radius: 25px;
+.chat-bubble {
+  @include calc(width, '100% - 80px');
   display: inline-block;
-  font-size: 1em;
-  min-height: 70px;
-  padding: 15px;
-  text-align: left;
   vertical-align: bottom;
-}
 
-.arrow-right {
-  border-bottom: 8px solid transparent;
-  border-left: 12px solid $grey;
-  border-top: 8px solid transparent;
-  display: inline-block;
-  height: 0;
-  margin-right: 10px;
-  vertical-align: middle;
-  width: 0;
+  &-text {
+    @include calc(max-width, '100% - 22px');
+    background: $white;
+    border: 3px solid $grey;
+    border-radius: 25px;
+    display: inline-block;
+    min-height: 70px;
+    padding: 15px;
+    text-align: left;
+    vertical-align: bottom;
+  }
+
+  &-arrow {
+    border-bottom: 8px solid transparent;
+    border-left: 12px solid $grey;
+    border-top: 8px solid transparent;
+    display: inline-block;
+    height: 0;
+    margin: 0 10px 25px 0;
+    vertical-align: bottom;
+    width: 0;
+  }
 }

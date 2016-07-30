@@ -8,13 +8,23 @@ import '../stylesheets/the-botmother.scss';
 class TheBotMother extends Component {
   constructor(props) {
     super(props);
+
+    this.renderQuote = this.renderQuote.bind(this);
+  }
+
+  renderQuote() {
+    return (this.props.quote) ? (
+      <div className="chat-bubble">
+        <div className="chat-bubble-text">{this.props.quote}</div>
+        <div className="chat-bubble-arrow"></div>
+      </div>
+    ) : null;
   }
 
   render() {
     return (
       <div className="the-botmother">
-        <div className="the-botmother-chat-bubble">{this.props.quote}</div>
-        <div className="arrow-right"></div>
+        {this.renderQuote()}
         <SVGInline svg={botSVG.toString()} className="the-botmother-svg" />
       </div>
     );

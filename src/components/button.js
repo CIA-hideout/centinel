@@ -4,6 +4,7 @@ import SVGInline from 'react-svg-inline';
 
 import arrowSVG from '../images/arrow.svg';
 import plusSVG from '../images/plus.svg';
+import plusWhiteSVG from '../images/plus-white.svg';
 
 import '../stylesheets/button.scss';
 
@@ -22,6 +23,12 @@ const Button = (props) => {
       case 'plus':
         if (location === 'front') {
           svg = plusSVG.toString();
+          className = 'front';
+        }
+        break;
+      case 'plus-white':
+        if (location === 'front') {
+          svg = plusWhiteSVG.toString();
           className = 'front';
         }
         break;

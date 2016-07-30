@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import Template from './template';
-import ProgressBar from '../components/progress-bar';
 import TheBotMother from './the-botmother';
+import Button from '../components/button';
+import ProgressBar from '../components/progress-bar';
+
 
 import '../stylesheets/home.scss';
 
@@ -73,6 +75,13 @@ class Home extends Component {
     return (
       <Template>
         <div className="home">
+          <Button
+            dest="/add-expenditure"
+            image="plus-white"
+            type="button"
+            text="Record Expenditure"
+            className="button-pink button-record"
+          />
           {this.renderDailyStats()}
           <TheBotMother quote="Money talks, but all yours ever say is ‘Goodbye’. Money talks, but all yours ever say is ‘Goodbye’." />
         </div>

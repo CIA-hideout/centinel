@@ -128,7 +128,7 @@ class Onboard extends Component {
             image="plus"
             type="button"
             text="Add More"
-            className="button-blue-dark-dotted onboard-add-button"
+            className="button-blue-dark-dashed onboard-add-button"
             onClick={this.addExpenditure}
           />
         </div>
