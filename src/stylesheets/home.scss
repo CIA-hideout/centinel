@@ -1,7 +1,7 @@
 @import 'variables';
 
 .home {
-  height: 100%;
+  min-height: 100%;
   position: relative;
 
   h1 {
@@ -85,6 +85,45 @@
   }
 }
 
+.expenses-heading {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 0 20px;
+  vertical-align: middle;
+}
+
+.expenses-list {
+  @include calc(width, '100% - 187px');
+  border-left: 3px solid $blue-lighter;
+  display: inline-block;
+  padding: 15px 20px;
+  vertical-align: middle;
+}
+
+.expense-item {
+  display: inline-block;
+  margin: 10px 0;
+}
+
+.expense-rank {
+  color: $blue-dark;
+  font-weight: 500;
+  width: 20%;
+}
+
+.expense-name {
+  letter-spacing: 1px;
+  text-align: center;
+  width: 50%;
+}
+
+.expense-cost {
+  color: $blue;
+  font-weight: 500;
+  text-align: right;
+  width: 30%;
+}
+
 @media (max-width: 686px) {
   .home-buttons-bar {
     margin: 0;
@@ -134,5 +173,18 @@
       margin-left: 0;
       margin-right: 0;
     }
+  }
+
+  .expenses-heading {
+    border-bottom: 3px solid $blue-lighter;
+    display: block;
+    padding: 0 0 5px;
+  }
+
+  .expenses-list {
+    border: 0;
+    display: block;
+    padding: 0;
+    width: 100%;
   }
 }

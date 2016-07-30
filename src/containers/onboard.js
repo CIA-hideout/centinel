@@ -55,27 +55,26 @@ class Onboard extends Component {
         cost: this.state.milestoneCost,
       });
     }
-
-    console.log('start');
   }
 
   incrementStage() {
-    switch(this.state.onboardStage) {
+    const { onboardStage, monthlyIncome, expenditures, estimatedDailyBudget } = this.state;
+
+    switch (onboardStage) {
       case 2:
         // Collect monthly income and monthly default expenditures
-        this.props.saveSalary(this.state.monthlyIncome);
-        this.props.saveMonthlyDefaultExpenditures(this.state.expenditures);
-        console.log(calcTax(this.state.monthlyIncome));
+        this.props.saveSalary(monthlyIncome);
+        this.props.saveMonthlyDefaultExpenditures(expenditures);
 
         this.calculateDefaultBudget();
         break;
 
       case 3:
-        this.props.saveDailyBudget(this.state.estimatedDailyBudget);
+        this.props.saveDailyBudget(estimatedDailyBudget);
         break;
 
       default:
-        console.log('[The Botmother]: this stage not for submission, twat');
+        break;
     }
 
     this.setState({ onboardStage: ++this.state.onboardStage });
@@ -84,17 +83,17 @@ class Onboard extends Component {
   calculateDefaultBudget() {
     let totalExpenditures = 0;
     let estimatedDailyBudget = 0;
+    const { expenditures, monthlyIncome } = this.state;
 
-    this.state.expenditures.forEach(expense => {
+    expenditures.forEach(expense => {
       totalExpenditures += parseInt(expense.cost, 10);
     });
 
     // estimating that number of days in month is 30
     if (!totalExpenditures) {
-      estimatedDailyBudget = parseFloatToDp((this.state.monthlyIncome * 1.0) / 30, 2);
+      estimatedDailyBudget = parseFloatToDp((monthlyIncome * 1.0) / 30, 2);
     } else {
-      estimatedDailyBudget = parseFloatToDp(((this.state.monthlyIncome * 1.0 -
-      totalExpenditures) / 30), 2);
+      estimatedDailyBudget = parseFloatToDp(((monthlyIncome * 1.0 - totalExpenditures) / 30), 2);
     }
 
     this.setState({ estimatedDailyBudget });
@@ -129,7 +128,7 @@ class Onboard extends Component {
         <Textbox
           type="text"
           className="onboard-item-textbox"
-          placeholder="Default Expenditure"
+          placeholder="Expenditure"
           value={expenditure.item}
           onChange={(event) => this.updateExpenditure(event, index, 'item')}
         />
@@ -289,7 +288,11 @@ class Onboard extends Component {
 }
 
 Onboard.propTypes = {
-
+  getSelectedUser: PropTypes.object.isRequired,
+  saveMilestone: PropTypes.func.isRequired,
+  saveSalary: PropTypes.func.isRequired,
+  saveMonthlyDefaultExpenditures: PropTypes.func.isRequired,
+  saveDailyBudget: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

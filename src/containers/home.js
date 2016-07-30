@@ -25,11 +25,6 @@ class Home extends Component {
     this.renderButtons = this.renderButtons.bind(this);
     this.renderDailyStats = this.renderDailyStats.bind(this);
     this.initHome = this.initHome.bind(this);
-
-    // should be props if possible
-    // this.budget = 200.00;
-    // this.budget = parseInt(this.props.dailyBudget, 10);
-    // this.budgetSpent = 130.10;
   }
 
   componentWillMount() {
@@ -89,6 +84,20 @@ class Home extends Component {
     );
   }
 
+  renderDailyExpenses() {
+    const { expenses } = this.props;
+    const sortedExpenses = expenses.slice(0);
+    sortedExpenses.sort((curr, prev) => prev.cost - curr.cost);
+
+    return sortedExpenses.map((expense, index) => (
+      <div key={index}>
+        <span className="expense-item expense-rank">{index + 1}</span>
+        <span className="expense-item expense-name">{expense.name}</span>
+        <span className="expense-item expense-cost">${expense.cost}</span>
+      </div>
+    ));
+  }
+
   renderDailyStats() {
     const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
                         'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -121,8 +130,9 @@ class Home extends Component {
           <span className="home-daily-info home-daily-info-right">AMOUNT LEFT</span>
         </div>
         <hr />
-        <div>
-          <p>*More data here*</p>
+        <h3 className="expenses-heading">Today's Expenses</h3>
+        <div className="expenses-list">
+          {this.renderDailyExpenses()}
         </div>
       </div>
     );
@@ -142,7 +152,10 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-
+  rehydrated: PropTypes.bool.isRequired,
+  user: PropTypes.object.isRequired,
+  expenses: PropTypes.array.isRequired,
+  totalSpentToday: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({

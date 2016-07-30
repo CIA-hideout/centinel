@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { signupUser } from '../actions/action-users';
 
@@ -23,9 +23,20 @@ class Signup extends Component {
     this.onSignupSubmit = this.onSignupSubmit.bind(this);
   }
 
+  onSignupSubmit() {
+    if (this.validate()) {
+      const data = {
+        name: this.state.name,
+        password: this.state.password,
+      };
+
+      this.props.signupUser(data);
+    }
+  }
+
   validate() {
     let checker = false;
-    let error = 'Password do not match';
+    let error = 'Passwords do not match';
 
     if (this.state.password === this.state.reEnteredPw && this.state.password !== '') {
       checker = true;
@@ -36,24 +47,13 @@ class Signup extends Component {
     return checker;
   }
 
-  onSignupSubmit() {
-    if(this.validate()) {
-      const data = {
-        name: this.state.name,
-        password: this.state.password,
-      };
-
-      this.props.signupUser(data);
-    }
-  }
-
   render() {
     return (
       <Template>
-        <div className="signup-container">
+        <div className="signup-container container">
           <h1>Centinel Signup</h1>
           <div className="signup-form">
-            <h3>What&#39;s your name?</h3>
+            <h3>Enter your details</h3>
             <Textbox
               type="text"
               className="signup-textbox"
@@ -61,7 +61,6 @@ class Signup extends Component {
               value={this.state.name}
               onChange={(e) => this.setState({ name: e.target.value })}
             />
-            <h3>Enter your desired password</h3>
             <Textbox
               type="password"
               className="signup-textbox"
@@ -69,11 +68,10 @@ class Signup extends Component {
               value={this.state.password}
               onChange={(e) => this.setState({ password: e.target.value })}
             />
-            <h3>Re-enter it again</h3>
             <Textbox
               type="password"
               className="signup-textbox"
-              placeholder="Password"
+              placeholder="Re-enter Password"
               value={this.state.reEnteredPw}
               onChange={(e) => this.setState({ reEnteredPw: e.target.value })}
             />
@@ -94,6 +92,8 @@ class Signup extends Component {
   }
 }
 
-const mapStateToProps = (state) => state;
+Signup.propTypes = {
+  signupUser: PropTypes.func.isRequired,
+};
 
-export default connect(mapStateToProps, { signupUser })(Signup);
+export default connect(null, { signupUser })(Signup);
