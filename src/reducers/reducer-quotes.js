@@ -6,11 +6,38 @@ import duringOverviewQuotes from '../data/duringOverview.json';
 import userEntersApplication from '../data/userEntersApplication.json';
 
 const getRandomQuote = (state, key) => {
-  let randomQuote = state.quotes[key][Math.floor(Math.random() * state.quotes[key].length)];
+  let quotesPool = state.quotes[key];
 
-  // TODO: Handle ${variable}
+  if (quotesPool.length === 0) {
+    return '';
+  }
 
-  return randomQuote;
+  if (key === 'duringOverview') {
+    quotesPool = quotesPool.positive.concat(quotesPool.negative);
+  }
+
+  return quotesPool[Math.floor(Math.random() * quotesPool.length)];
+};
+
+const getOverviewQuote = (state, sentimental) => {
+  let quotePool = state.quotes.duringOverview[sentimental.type];
+  let chosenQuote = quotePool[Math.floor(Math.random() * quotePool.length)];
+
+  // Substitute back the values
+  const percentSubStr = '${percent}';
+  const priceSubStr = '${price}';
+  const percentExistence = chosenQuote.indexOf(percentSubStr);
+  const priceExistence = chosenQuote.indexOf(priceSubStr);
+
+  if (priceExistence !== -1) {
+    chosenQuote = chosenQuote.replace(priceSubStr, `$${sentimental.spent}`);
+  }
+
+  if (percentExistence !== -1) {
+    chosenQuote = chosenQuote.replace(percentSubStr, `${sentimental.percentage}%`);
+  }
+
+  return chosenQuote;
 };
 
 export const quotes = () => {
@@ -51,5 +78,17 @@ export const quotes = () => {
 export default quotes();
 
 export const getAddAnItemQuote = (state) => getRandomQuote(state, 'addAnItem');
-export const getDuringOverviewQuote = (state) => getRandomQuote(state, 'duringOverview');
+
+export const getDuringOverviewQuote = (state, sentimental) => {
+  if (sentimental === undefined) {
+    return getRandomQuote(state, 'duringOverview');
+  }
+
+  if (state.quotes.addAnItem.length > 0) {
+    return getOverviewQuote(state, sentimental);
+  }
+
+  return '';
+};
+
 export const getUserEntersAppQuote = (state) => getRandomQuote(state, 'userEntersApp');

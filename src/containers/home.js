@@ -139,12 +139,32 @@ class Home extends Component {
   }
 
   render() {
+    const decideSentimental = () => {
+      const averagePercent = Math.floor(Math.random() * 50) + 1;
+      const averageSpending = Math.floor(Math.random() * 300) + 1;
+
+      if (this.budgetSpent / this.budget > 0.5) {
+        // negative, half way through the budget
+        return {
+          type: 'negative',
+          percentage: averagePercent,
+          spent: this.budgetSpent || averageSpending,
+        };
+      } else {
+        return {
+          type: 'positive',
+          percentage: averagePercent,
+          spent: this.budgetSpent || averageSpending,
+        };
+      }
+    };
+
     return (
       <Template>
         <div className="home">
           {this.renderButtons()}
           {this.renderDailyStats()}
-          <TheBotMother quoteType="duringOverview" price="" percent="" />
+          <TheBotMother quoteType="duringOverview" sentimental={decideSentimental()} />
         </div>
       </Template>
     );

@@ -51,7 +51,7 @@ class AddExpenditure extends Component {
     this.state.expenditures.forEach(expense => {
       this.props.createExpense({
         name: expense.item,
-        cost: expense.cost
+        cost: expense.cost,
       });
     });
 
@@ -119,6 +119,5 @@ AddExpenditure.propTypes = {
 const mapStateToProps = (state) => ({
   expenses: expenseReducer.getExpenses(state),
 });
-
 
 export default connect(mapStateToProps, { ...expenseActions, push })(AddExpenditure);
