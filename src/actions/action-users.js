@@ -39,3 +39,13 @@ export const saveMonthlyDefaultExpenditures = (data) => ({
   type: types.SAVE_MONTHLY_DEFAULT_EXPENDITURES,
   data,
 });
+
+export const saveDailyBudget = (data) => ({
+  type: types.SAVE_DAILY_BUDGET,
+  data,
+});
+
+export const saveMilestone = (data) => ({
+  type: types.SAVE_MILESTONE,
+  data,
+});

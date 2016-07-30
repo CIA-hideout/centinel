@@ -28,6 +28,8 @@ class Onboard extends Component {
       ],
       monthlyIncome: '',
       estimatedDailyBudget: '',
+      milestoneItem: '',
+      milestoneCost: '',
     };
 
     this.calculateDefaultBudget = this.calculateDefaultBudget.bind(this);
@@ -45,6 +47,14 @@ class Onboard extends Component {
   }
 
   onStartClick() {
+    // check for milestone and save accordingly
+    if (this.state.milestoneItem !== '' && this.state.milestoneCost !== '') {
+      this.props.saveMilestone({
+        item: this.state.milestoneItem,
+        cost: this.state.milestoneCost,
+      });
+    }
+
     console.log('start');
   }
 
@@ -59,11 +69,11 @@ class Onboard extends Component {
         break;
 
       case 3:
-        
+        this.props.saveDailyBudget(this.state.estimatedDailyBudget);
         break;
 
       default:
-        console.log('Null pointer exception');
+        console.log('[The Botmother]: this stage not for submission, twat');
     }
 
     this.setState({ onboardStage: ++this.state.onboardStage });
@@ -221,11 +231,15 @@ class Onboard extends Component {
             type="text"
             className="onboard-item-textbox"
             placeholder="The thing"
+            value={this.state.milestoneItem}
+            onChange={(e) => this.setState({ milestoneItem: e.target.value })}
           />
           <Textbox
             type="text"
             className="onboard-item-cost"
             placeholder="$"
+            value={this.state.milestoneCost}
+            onChange={(e) => this.setState({ milestoneCost: e.target.value })}
           />
           <span className="onboard-optional">Optional</span>
         </div>

@@ -7,3 +7,4 @@ export const expenseTypeIdToStr = (id) => (
 export const parseFloatToDp = (num, decimalPlaces) => (
   parseFloat(Math.round(num * 100) / 100).toFixed(decimalPlaces)
 );
+
