@@ -1,9 +1,13 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+
+import { getSelectedUser } from '../reducers/reducer-selected-user';
+import { getRehydrationStatus } from '../reducers/';
+
 import Template from './template';
 import TheBotMother from './the-botmother';
 import Button from '../components/button';
 import ProgressBar from '../components/progress-bar';
-
 
 import '../stylesheets/home.scss';
 
@@ -14,21 +18,38 @@ class Home extends Component {
     this.state = {
       date: '',
       percentageOfBudgetSpent: 0,
+      rehydrated: false,
     };
 
     this.renderDailyStats = this.renderDailyStats.bind(this);
+    this.initHome = this.initHome.bind(this);
 
     // should be props if possible
-    this.budget = 200.00;
+    // this.budget = 200.00;
+    // this.budget = parseInt(this.props.dailyBudget, 10);
     this.budgetSpent = 130.10;
   }
 
   componentWillMount() {
-    // get amount spent
+    if (this.props.rehydrated) {
+      this.initHome();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.rehydrated && !this.state.rehydrated) {
+      this.initHome();
+    }
+  }
+
+  initHome() {
+    this.budget = parseInt(this.props.user.dailyBudget, 10);
     const percentageOfBudgetSpent = this.budgetSpent / this.budget * 100;
+
     this.setState({
       date: new Date(),
       percentageOfBudgetSpent,
+      rehydrated: true,
     });
   }
 
@@ -41,6 +62,10 @@ class Home extends Component {
                         'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     const { date, percentageOfBudgetSpent } = this.state;
     const amountLeft = this.budget - this.budgetSpent;
+
+    if (!this.state.rehydrated) {
+      return null;
+    }
 
     return (
       <div className="home-daily-stats container">
@@ -83,7 +108,7 @@ class Home extends Component {
             className="button-pink button-record"
           />
           {this.renderDailyStats()}
-          <TheBotMother quote="Money talks, but all yours ever say is ‘Goodbye’. Money talks, but all yours ever say is ‘Goodbye’." />
+          <TheBotMother quoteType="duringOverview" price="" percent="" />
         </div>
       </Template>
     );
@@ -94,4 +119,9 @@ Home.propTypes = {
 
 };
 
-export default Home;
+const mapStateToProps = (state) => ({
+  user: getSelectedUser(state),
+  rehydrated: getRehydrationStatus(state),
+});
+
+export default connect(mapStateToProps)(Home);

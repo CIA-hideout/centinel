@@ -6,7 +6,7 @@ import createLogger from 'redux-logger';
 import { persistStore, autoRehydrate } from 'redux-persist';
 
 import rootReducer from '../reducers/';
-import { initAppState } from '../actions/index';
+import { initAppState, rehydrateApp } from '../actions/index';
 import reducerTest from '../reducer-test';
 
 const loggerMiddleware = createLogger();
@@ -25,10 +25,11 @@ const store = createStore(
     )
 );
 
-persistStore(store, { blacklist: ['users', 'expenses', 'routing'] }, () => {
+persistStore(store, { blacklist: ['users', 'routing', 'persistence'] }, () => {
   // init initial data
   store.dispatch(initAppState());
-  reducerTest(store);
+  store.dispatch(rehydrateApp());
+  // reducerTest(store);
 });
 
 export default store;

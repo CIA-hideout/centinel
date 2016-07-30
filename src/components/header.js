@@ -27,7 +27,6 @@ const Header = (props) => {
           <SVGInline svg={logoSVG.toString()} className="header-logo" />
         </Link>
         {renderContent()}
-        </div>
       </div>
     </div>
   );

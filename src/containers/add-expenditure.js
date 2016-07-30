@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 're'
+
 import Template from './template';
 import Button from '../components/button';
 import Textbox from '../components/textbox';

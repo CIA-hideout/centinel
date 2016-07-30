@@ -1,5 +1,6 @@
 // Init initial state
 export const INIT_APP_STATE = 'INIT_APP_STATE';
+export const REHYDRATION_COMPLETED = 'REHYDRATION_COMPLETED';
 
 // Users
 export const CREATE_USER = 'CREATE_USER';
