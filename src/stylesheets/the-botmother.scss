@@ -1,0 +1,50 @@
+@import 'variables';
+
+.the-botmother {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  width: 100%;
+}
+
+.the-botmother-svg {
+  cursor: pointer;
+  display: inline-block;
+
+  svg {
+    @include transition(all, .5s, ease-out);
+    vertical-align: middle;
+    width: 80px;
+  }
+
+  &:hover {
+    svg {
+      transform: rotate(-15deg);
+    }
+  }
+}
+
+.the-botmother-chat-bubble {
+  @include calc(max-width, '100% - 110px');
+  background: $white;
+  border: 3px solid $grey;
+  border-radius: 25px;
+  display: inline-block;
+  font-size: 1em;
+  min-height: 70px;
+  padding: 15px;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.arrow-right {
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid $grey;
+  border-top: 8px solid transparent;
+  display: inline-block;
+  height: 0;
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 0;
+}

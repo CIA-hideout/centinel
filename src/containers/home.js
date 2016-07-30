@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Template from './template';
 import ProgressBar from '../components/progress-bar';
+import TheBotMother from './the-botmother';
 
 import '../stylesheets/home.scss';
 
@@ -41,7 +42,7 @@ class Home extends Component {
 
     return (
       <div className="home-daily-stats container">
-        <h1>Today's Expenditure</h1>
+        <h1 className="home-daily-stats-heading">Today</h1>
         <div className="home-date">
           <span className="home-day">{date.getDate()}</span>
           <span className="home-month">{monthNames[date.getMonth()]}</span>
@@ -73,6 +74,7 @@ class Home extends Component {
       <Template>
         <div className="home">
           {this.renderDailyStats()}
+          <TheBotMother quote="Money talks, but all yours ever say is ‘Goodbye’. Money talks, but all yours ever say is ‘Goodbye’." />
         </div>
       </Template>
     );
