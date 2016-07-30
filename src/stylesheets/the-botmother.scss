@@ -25,6 +25,14 @@
   }
 }
 
+@media (max-width: 414px) {
+  .the-botmother-svg {
+    svg {
+      width: 50px;
+    }
+  }
+}
+
 .chat-bubble {
   @include calc(width, '100% - 80px');
   display: inline-block;

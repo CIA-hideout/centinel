@@ -75,3 +75,24 @@
     padding-top: 10px;
   }
 }
+
+@media (max-width: 414px) {
+  .onboard-welcome {
+    height: 80%;
+    width: 90%;
+
+    &-logo {
+      svg {
+        max-width: 80%;
+      }
+    }
+
+    h1 {
+      font-size: 1.6em;
+    }
+  }
+
+  .onboard-container {
+    padding: 30px 20px;
+  }
+}

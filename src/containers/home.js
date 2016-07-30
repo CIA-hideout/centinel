@@ -22,6 +22,7 @@ class Home extends Component {
       rehydrated: false,
     };
 
+    this.renderButtons = this.renderButtons.bind(this);
     this.renderDailyStats = this.renderDailyStats.bind(this);
     this.initHome = this.initHome.bind(this);
 
@@ -57,6 +58,35 @@ class Home extends Component {
 
   parseFloat(num, decimalPlaces) {
     return parseFloat(Math.round(num * 100) / 100).toFixed(decimalPlaces);
+  }
+
+  renderButtons() {
+    return (
+      <div className="home-buttons-bar">
+        <Button
+          type="button"
+          text="Today"
+          className="button-grey button-left"
+        />
+        <Button
+          type="button"
+          text="This Week"
+          className="button-grey button-middle"
+        />
+        <Button
+          type="button"
+          text="This Month"
+          className="button-grey button-right"
+        />
+        <Button
+          dest="/add-expenditure"
+          image="plus-white"
+          type="button"
+          text="Record Expenditure"
+          className="button-pink button-record"
+        />
+      </div>
+    );
   }
 
   renderDailyStats() {
@@ -102,13 +132,7 @@ class Home extends Component {
     return (
       <Template>
         <div className="home">
-          <Button
-            dest="/add-expenditure"
-            image="plus-white"
-            type="button"
-            text="Record Expenditure"
-            className="button-pink button-record"
-          />
+          {this.renderButtons()}
           {this.renderDailyStats()}
           <TheBotMother quoteType="duringOverview" price="" percent="" />
         </div>

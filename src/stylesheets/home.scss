@@ -4,11 +4,6 @@
   height: 100%;
   position: relative;
 
-  .button-record {
-    margin-bottom: 15px;
-    width: 100%;
-  }
-
   h1 {
     display: inline-block;
     margin: 0;
@@ -73,6 +68,71 @@
 
     .home-daily-info-right {
       float: right;
+    }
+  }
+}
+
+.home-buttons-bar {
+  margin-bottom: 15px;
+  width: 100%;
+
+  .button-grey {
+    width: 20%;
+  }
+
+  .button-record {
+    float: right;
+  }
+}
+
+@media (max-width: 686px) {
+  .home-buttons-bar {
+    margin: 0;
+
+    .button-grey {
+      @include calc(width, '(100% - 10px) / 3');
+      margin-bottom: 10px;
+
+      .button-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: top;
+        white-space: nowrap;
+        width: 100%;
+      }
+    }
+
+    .button-record {
+      float: none;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+  }
+
+  .home-daily-stats {
+    &-heading {
+      font-size: 1.6em;
+    }
+
+    .home-date {
+      .home-day,
+      .home-month {
+        font-size: 1.6em;
+      }
+    }
+
+    hr {
+      margin-top: 0;
+    }
+
+    .home-progress-bar {
+      margin-top: 15px;
+    }
+
+    .home-daily-amount,
+    .home-daily-info {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 }

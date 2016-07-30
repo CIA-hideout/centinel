@@ -5,9 +5,10 @@
   width: 100vw;
 
   &-container {
-    @include calc(height, '100% - 50px');
+    @include calc(height, '100vh - 50px');
     margin: 0 auto;
     max-width: 980px;
+    overflow-y: auto;
     padding: 20px;
   }
 }

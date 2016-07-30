@@ -23,7 +23,7 @@ const Header = (props) => {
   return (
     <div className="header">
       <div className="header-width">
-        <Link to="/home">
+        <Link to="/home" className="center-vertical">
           <SVGInline svg={logoSVG.toString()} className="header-logo" />
         </Link>
         {renderContent()}
