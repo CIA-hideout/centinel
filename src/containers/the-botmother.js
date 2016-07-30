@@ -37,9 +37,9 @@ TheBotMother.propTypes = {
   quoteType: PropTypes.string,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   addAnItem: quotesReducer.getAddAnItemQuote(state),
-  duringOverview: quotesReducer.getDuringOverviewQuote(state),
+  duringOverview: quotesReducer.getDuringOverviewQuote(state, ownProps.sentimental),
   userEntersApp: quotesReducer.getUserEntersAppQuote(state),
 });
 

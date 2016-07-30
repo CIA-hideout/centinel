@@ -164,7 +164,7 @@ class Home extends Component {
         <div className="home">
           {this.renderButtons()}
           {this.renderDailyStats()}
-          <TheBotMother quoteType="duringOverview" price="" percent="" />
+          <TheBotMother quoteType="duringOverview" sentimental={decideSentimental()} />
         </div>
       </Template>
     );
