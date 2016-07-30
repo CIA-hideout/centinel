@@ -29,3 +29,13 @@ export const signupUser = (data) => (dispatch) => {
   });
   dispatch(push('/home'));
 };
+
+export const saveSalary = (data) => ({
+  type: types.SAVE_SALARY,
+  data,
+});
+
+export const saveMonthlyDefaultExpenditures = (data) => ({
+  type: types.SAVE_MONTHLY_DEFAULT_EXPENDITURES,
+  data,
+});

@@ -6,7 +6,9 @@ export const CREATE_USER = 'CREATE_USER';
 export const EDIT_USER = 'EDIT_USER';
 export const DELETE_USER = 'DELETE_USER';
 
-export const SIGN_UP_USER = 'SIGN_UP_USER'
+export const SIGN_UP_USER = 'SIGN_UP_USER';
+export const SAVE_SALARY = 'SAVE_SALARY';
+export const SAVE_MONTHLY_DEFAULT_EXPENDITURES = 'SAVE_MONTHLY_DEFAULT_EXPENDITURES';
 
 // Expenses
 export const CREATE_EXPENSE = 'CREATE_EXPENSE';
