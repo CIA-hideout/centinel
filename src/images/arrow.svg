@@ -2,8 +2,11 @@
 <!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 257 231.7" style="enable-background:new 0 0 257 231.7;" xml:space="preserve">
+<style type="text/css">
+	.arrow{fill:#FFFFFF;}
+</style>
 <g>
-	<path d="M129.8,4.9c-6.6,6.6-6.6,17.3,0,23.8l69.4,69.4H16.9C7.5,98.2,0,105.7,0,115c0,9.3,7.5,16.9,16.9,16.9h182.5l-71,71
+	<path class="arrow" d="M129.8,4.9c-6.6,6.6-6.6,17.3,0,23.8l69.4,69.4H16.9C7.5,98.2,0,105.7,0,115s7.5,16.9,16.9,16.9h182.5l-71,71
 		c-6.6,6.6-6.6,17.3,0,23.8c6.6,6.6,17.2,6.6,23.8,0l96.6-96.6c0.5-0.5,1-1,1.4-1.6c4.1-3.1,6.8-8,6.8-13.5c0-5.4-2.5-10.1-6.4-13.2
 		c-0.1-0.1-0.2-0.2-0.2-0.3L153.7,4.9C147.1-1.6,136.4-1.6,129.8,4.9z"/>
 </g>

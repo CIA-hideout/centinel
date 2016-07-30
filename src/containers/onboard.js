@@ -98,6 +98,7 @@ class Onboard extends Component {
           />
           <h1>Welcome to Centinel!</h1>
           <Button
+            image="arrow"
             type="button"
             text="Get Started"
             className="button-blue"
@@ -124,6 +125,7 @@ class Onboard extends Component {
           <p>e.g. Utility bills, Insurance, Subscriptions</p>
           {this.renderExpenditures()}
           <Button
+            image="plus"
             type="button"
             text="Add More"
             className="button-blue-dark-dotted onboard-add-button"
@@ -131,6 +133,7 @@ class Onboard extends Component {
           />
         </div>
         <Button
+          image="arrow"
           type="button"
           text="Continue"
           className="button-blue"
@@ -148,6 +151,7 @@ class Onboard extends Component {
           <h3>What&#39;s your daily budget?</h3>
           <p>We&#39;ve calculated an estimate for you. Feel free to tweak it!</p>
           <Textbox
+            key="stage3"
             type="text"
             className="onboard-textbox"
             value={this.state.estimatedDailyBudget}
@@ -155,6 +159,7 @@ class Onboard extends Component {
           />
         </div>
         <Button
+          image="arrow"
           type="button"
           text="Continue"
           className="button-blue"
@@ -175,16 +180,17 @@ class Onboard extends Component {
             type="text"
             className="onboard-item-textbox"
             placeholder="The thing"
-            value=""
           />
           <Textbox
             type="text"
             className="onboard-item-cost"
             placeholder="$"
           />
-          <span>Optional</span>
+          <span className="onboard-optional">Optional</span>
         </div>
         <Button
+          dest="/home"
+          image="arrow"
           type="button"
           text="Start Saving"
           className="button-blue"

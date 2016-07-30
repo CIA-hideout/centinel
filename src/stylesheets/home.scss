@@ -1,0 +1,73 @@
+@import 'variables';
+
+.home {
+  height: 100%;
+  position: relative;
+
+  h1 {
+    display: inline-block;
+    margin: 0;
+  }
+
+  &-daily-stats {
+    &-heading {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 60%;
+    }
+
+    .home-date {
+      display: inline-block;
+      float: right;
+    }
+
+    .home-day {
+      font-size: 2em;
+      font-weight: 200;
+    }
+
+    .home-month {
+      font-size: 2em;
+      font-weight: 600;
+    }
+
+    hr {
+      border-style: none;
+      border-top: 3px solid $blue-lighter;
+      margin: 10px 0 0;
+    }
+
+    .home-progress-bar {
+      margin-top: 30px;
+    }
+
+    .home-daily-amount {
+      display: inline-block;
+      font-size: 1.2em;
+      font-weight: 500;
+      margin: 15px 10px 5px;
+    }
+
+    .home-amount-spent {
+      color: $pink;
+    }
+
+    .home-amount-left {
+      color: $green;
+      float: right;
+    }
+
+    .home-daily-info {
+      display: inline-block;
+      font-size: .9em;
+      font-weight: 500;
+      letter-spacing: .5px;
+      margin: 0 10px 20px;
+    }
+
+    .home-daily-info-right {
+      float: right;
+    }
+  }
+}
