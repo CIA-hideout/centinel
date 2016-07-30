@@ -24,7 +24,6 @@ const expenses = (state = [], action) => {
   switch (action.type) {
     case types.CREATE_EXPENSE:
       if (validateCreateExpense(action.data)) {
-
         const copiedState = state.slice(0);
         const newExpense = {
           id: copiedState.length === 0 ? 0 : array.last(copiedState).id + 1,

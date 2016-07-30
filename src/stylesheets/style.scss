@@ -52,7 +52,7 @@ button {
 
 .center-vertical {
   @include transform-translate(0, -50%);
-  position: relative;
+  position: absolute;
   top: 50%;
 }
 
@@ -60,5 +60,5 @@ button {
   background: $white;
   border: 1px solid $blue;
   border-radius: 5px;
-  padding: 20px;
+  padding: 15px;
 }

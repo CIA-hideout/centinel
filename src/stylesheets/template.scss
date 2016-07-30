@@ -6,8 +6,10 @@
 
   &-container {
     @include calc(height, '100% - 50px');
+    box-sizing: border-box;
     margin: 0 auto;
     max-width: 980px;
+    overflow-y: auto;
     padding: 20px;
   }
 }

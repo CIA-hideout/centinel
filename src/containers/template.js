@@ -25,6 +25,7 @@ class Template extends Component {
 
 Template.propTypes = {
   children: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -15,19 +15,6 @@
     position: relative;
   }
 
-  &-logo {
-    @include transition(all, .3s, ease-out);
-    display: inline-block;
-
-    svg {
-      height: 30px;
-    }
-
-    &:hover {
-      opacity: .6;
-    }
-  }
-
   &-user {
     line-height: 30px;
     position: absolute;
@@ -54,6 +41,33 @@
       margin-left: 10px;
       vertical-align: middle;
       width: 30px;
+    }
+  }
+}
+
+.header-logo {
+  @include transition(all, .3s, ease-out);
+  display: inline-block;
+
+  svg {
+    height: 30px;
+  }
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
+@media (max-width: 414px) {
+  .header-logo {
+    svg {
+      height: 25px;
+    }
+  }
+
+  .header-user {
+    p {
+      opacity: 0;
     }
   }
 }
