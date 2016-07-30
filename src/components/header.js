@@ -7,15 +7,26 @@ import logoSVG from '../images/full-logo-horizontal.svg';
 import '../stylesheets/header.scss';
 
 const Header = (props) => {
+  const renderContent = () => {
+    if (props.user.hasOwnProperty('name')) {
+      return (
+        <div className="header-user">
+          <p>{props.user.name}</p>
+          <div className="fake-user-pic"></div>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div className="header">
       <div className="header-width">
         <Link to="/home">
           <SVGInline svg={logoSVG.toString()} className="header-logo" />
         </Link>
-        <div className="header-user">
-          <p>{props.user.name}</p>
-          <div className="fake-user-pic"></div>
+        {renderContent()}
         </div>
       </div>
     </div>

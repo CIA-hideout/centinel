@@ -1,0 +1,74 @@
+@import 'variables';
+
+.signup-container {
+  background: $white;
+  padding: 50px 20px;
+  text-align: center;
+
+  h1 {
+    color: $black;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.onboard-welcome {
+  height: 70%;
+  width: 80%;
+
+  &-logo {
+    svg {
+      max-width: 100%;
+      width: 300px;
+    }
+  }
+
+  &-inner {
+    h1 {
+      color: $blue-dark;
+      margin: 50px 0 20px;
+    }
+  }
+}
+
+.signup-form {
+  margin: 30px auto 40px;
+  max-width: 500px;
+  text-align: left;
+
+  h3 {
+    font-size: 1.3em;
+    font-weight: 400;
+  }
+
+  p {
+    color: $grey;
+    font-size: .9em;
+    font-weight: 200;
+  }
+
+  .signup-textbox {
+    width: 100%;
+  }
+
+  .signup-item-textbox {
+    width: 65%;
+  }
+
+  .signup-submit-btn {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  span {
+    color: $grey;
+    display: block;
+    font-size: .8em;
+    padding-top: 10px;
+  }
+
+  .error-msg {
+    color: $red-light;
+    margin: 7px 0;
+  }
+}

@@ -6,6 +6,7 @@ import Login from './containers/login';
 import Onboard from './containers/onboard';
 import Home from './containers/home';
 import AddExpenditure from './containers/add-expenditure';
+import Signup from './containers/signup';
 
 export default (
   <Route path="/" component={App}>
@@ -13,5 +14,6 @@ export default (
     <Route path="/welcome" component={Onboard} />
     <Route path="/home" component={Home} />
     <Route path="/add-expenditure" component={AddExpenditure} />
+    <Route path="/signup" component={Signup} />
   </Route>
 );

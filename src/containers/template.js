@@ -1,12 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { getSelectedUser } from '../reducers/reducer-selected-user';
+
 import Header from '../components/header';
 
 import '../stylesheets/template.scss';
 
-const user = {
-  id: 1,
-  name: 'Emma Watson',
-};
+// const user = {
+//   id: 1,
+//   name: 'Emma Watson',
+// };
 
 class Template extends Component {
   constructor(props) {
@@ -16,7 +19,7 @@ class Template extends Component {
   render() {
     return (
       <div className="template">
-        <Header user={user} />
+        <Header user={this.props.user} />
         <div className="template-container">
           {this.props.children}
         </div>
@@ -29,4 +32,8 @@ Template.propTypes = {
   children: PropTypes.object.isRequired,
 };
 
-export default Template;
+const mapStateToProps = (state) => ({
+  user: getSelectedUser(state),
+});
+
+export default connect(mapStateToProps)(Template);

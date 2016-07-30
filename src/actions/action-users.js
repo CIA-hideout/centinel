@@ -1,4 +1,5 @@
 import * as types from '../constants/action-types';
+import { push } from 'react-router-redux';
 
 /**
  * User db
@@ -20,3 +21,11 @@ export const deleteUser = (userId) => ({
   type: types.DELETE_USER,
   userId,
 });
+
+export const signupUser = (data) => (dispatch) => {
+  dispatch({
+    type: types.SIGN_UP_USER,
+    data,
+  });
+  dispatch(push('/home'));
+};
