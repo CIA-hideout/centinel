@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getSelectedUser } from '../reducers/reducer-selected-user';
 import * as userActions from '../actions/action-users';
 import { parseFloatToDp } from '../util/helper';
+import calcTax from '../util/calc-tax';
 
 import Template from './template';
 import Button from '../components/button';
@@ -64,6 +65,7 @@ class Onboard extends Component {
         // Collect monthly income and monthly default expenditures
         this.props.saveSalary(this.state.monthlyIncome);
         this.props.saveMonthlyDefaultExpenditures(this.state.expenditures);
+        console.log(calcTax(this.state.monthlyIncome));
 
         this.calculateDefaultBudget();
         break;
@@ -81,14 +83,19 @@ class Onboard extends Component {
 
   calculateDefaultBudget() {
     let totalExpenditures = 0;
+    let estimatedDailyBudget = 0;
 
     this.state.expenditures.forEach(expense => {
       totalExpenditures += parseInt(expense.cost, 10);
     });
 
     // estimating that number of days in month is 30
-    const estimatedDailyBudget = parseFloatToDp(((this.state.monthlyIncome * 1.0 -
+    if (!totalExpenditures) {
+      estimatedDailyBudget = parseFloatToDp((this.state.monthlyIncome * 1.0) / 30, 2);
+    } else {
+      estimatedDailyBudget = parseFloatToDp(((this.state.monthlyIncome * 1.0 -
       totalExpenditures) / 30), 2);
+    }
 
     this.setState({ estimatedDailyBudget });
   }

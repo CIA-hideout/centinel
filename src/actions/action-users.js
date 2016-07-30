@@ -27,7 +27,7 @@ export const signupUser = (data) => (dispatch) => {
     type: types.SIGN_UP_USER,
     data,
   });
-  dispatch(push('/home'));
+  dispatch(push('/welcome'));
 };
 
 export const saveSalary = (data) => ({
