@@ -13,6 +13,10 @@
     margin: 0;
     padding: 0;
   }
+
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
 .button-login {
@@ -52,7 +56,7 @@
   }
 }
 
-.button-blue-dark-dotted {
+.button-blue-dark-dashed {
   @include transition(all, .3s, ease-out);
   background: $white;
   border: 2px dashed $blue-dark;
@@ -67,6 +71,22 @@
   &:hover {
     background: lighten($blue-dark, 40%);
     border-color: lighten($blue-dark, 20%);
+  }
+}
+
+.button-pink {
+  @include transition(all, .3s, ease-out);
+  background: $pink;
+  border-radius: 5px;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  .button-text {
+    color: $white;
+  }
+
+  &:hover {
+    background: darken($pink, 10%);
   }
 }
 

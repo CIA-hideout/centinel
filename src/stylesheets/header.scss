@@ -16,10 +16,15 @@
   }
 
   &-logo {
+    @include transition(all, .3s, ease-out);
     display: inline-block;
 
     svg {
       height: 30px;
+    }
+
+    &:hover {
+      opacity: .6;
     }
   }
 
