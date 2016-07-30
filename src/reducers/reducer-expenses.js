@@ -16,7 +16,7 @@ const validateEditExpense = (data) => (
     data.hasOwnProperty('cost')
 );
 
-const checkExpenseExists = (expenseId, state) => (
+const retrieveExistingExpense = (expenseId, state) => (
   state.find(expense => expense.id === expenseId)
 );
 
@@ -44,7 +44,7 @@ const expenses = (state = [], action) => {
       return state;
 
     case types.EDIT_EXPENSE:
-      let editedExpense = checkExpenseExists(action.expenseId, state);
+      let editedExpense = retrieveExistingExpense(action.expenseId, state);
 
       if (validateEditExpense(action.data) && editedExpense) {
         const copiedState = state.slice(0);
@@ -63,7 +63,7 @@ const expenses = (state = [], action) => {
       return state;
 
     case types.DELETE_EXPENSE:
-      const deletedExpense = checkExpenseExists(action.expenseId, state);
+      const deletedExpense = retrieveExistingExpense(action.expenseId, state);
 
       if (deletedExpense) {
         const copiedState = state.slice(0);

@@ -25,7 +25,7 @@ class Signup extends Component {
 
   validate() {
     let checker = false;
-    let error = 'Password is invalid';
+    let error = 'Password do not match';
 
     if (this.state.password === this.state.reEnteredPw && this.state.password !== '') {
       checker = true;

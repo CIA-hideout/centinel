@@ -6,11 +6,6 @@ import Header from '../components/header';
 
 import '../stylesheets/template.scss';
 
-// const user = {
-//   id: 1,
-//   name: 'Emma Watson',
-// };
-
 class Template extends Component {
   constructor(props) {
     super(props);

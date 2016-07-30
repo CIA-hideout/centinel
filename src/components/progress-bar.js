@@ -6,7 +6,7 @@ const ProgressBar = (props) => {
   const { completed } = props;
 
   const style = {
-    width: `${completed}%`,
+    width: parseInt(completed, 10) > 100 ? '100%' : `${completed}%`,
   };
 
   return (
