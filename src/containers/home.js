@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { getSelectedUser } from '../reducers/reducer-selected-user';
 import { getRehydrationStatus } from '../reducers/';
+import { getExpenses, getTotalCostForExpenses } from '../reducers/reducer-expenses';
 
 import Template from './template';
 import TheBotMother from './the-botmother';
@@ -27,7 +28,7 @@ class Home extends Component {
     // should be props if possible
     // this.budget = 200.00;
     // this.budget = parseInt(this.props.dailyBudget, 10);
-    this.budgetSpent = 130.10;
+    // this.budgetSpent = 130.10;
   }
 
   componentWillMount() {
@@ -44,6 +45,7 @@ class Home extends Component {
 
   initHome() {
     this.budget = parseInt(this.props.user.dailyBudget, 10);
+    this.budgetSpent = parseInt(this.props.totalSpentToday, 10);
     const percentageOfBudgetSpent = this.budgetSpent / this.budget * 100;
 
     this.setState({
@@ -122,6 +124,8 @@ Home.propTypes = {
 const mapStateToProps = (state) => ({
   user: getSelectedUser(state),
   rehydrated: getRehydrationStatus(state),
+  expenses: getExpenses(state),
+  totalSpentToday: getTotalCostForExpenses(state),
 });
 
 export default connect(mapStateToProps)(Home);
